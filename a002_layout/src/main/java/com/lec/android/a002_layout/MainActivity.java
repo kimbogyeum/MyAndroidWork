@@ -13,6 +13,6 @@ public class MainActivity extends AppCompatActivity {
 
 
         int ss= 100;
-        String tt="하하";
+        String tt="하하호호호";
     }
 }
