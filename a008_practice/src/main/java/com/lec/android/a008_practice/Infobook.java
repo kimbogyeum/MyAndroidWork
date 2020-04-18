@@ -6,14 +6,14 @@ public class Infobook implements Serializable {
 
     String name;
     String age;
-    String email;
+    String address;
 
     public Infobook() { }
 
     public Infobook(String name, String age, String email) {
         this.name = name;
         this.age = age;
-        this.email = email;
+        this.address = address;
     }
 
     public String getName() { return name; }
@@ -24,7 +24,7 @@ public class Infobook implements Serializable {
 
     public void setAge(String age) { this.age = age; }
 
-    public String getEmail() { return email; }
+    public String getAddress() { return address; }
 
-    public void setEmail(String email) { this.email = email; }
+    public void setAddress(String email) { this.address = email; }
 }

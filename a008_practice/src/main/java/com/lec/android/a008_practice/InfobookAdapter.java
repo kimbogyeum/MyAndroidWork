@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class InfobookAdapter extends RecyclerView.Adapter<InfobookAdapter.ViewHolder> {
+public class InfobookAdapter<infobook> extends RecyclerView.Adapter<InfobookAdapter.ViewHolder> {
 
     List<Infobook> items=new ArrayList<Infobook>();
 
@@ -50,6 +50,23 @@ public class InfobookAdapter extends RecyclerView.Adapter<InfobookAdapter.ViewHo
             tvName=itemView.findViewById(R.id.tvName);
             tvAddress=itemView.findViewById(R.id.tvAddress);
             btnDel=itemView.findViewById(R.id.btnDel);
+
+            btnDel.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    adapter.removeItem(getAdapterPosition()); //데이터삭제, 이단계까지 하면 죽음
+                    //데이터 변경내역(추가, 삭제, 수정)이 adapter 에 반영되어야 정상적으로 동작함!!!
+                    adapter.notifyDataSetChanged();
+                }
+            });
+
+
+        }//end 생성자
+        public void setItem(Infobook item){
+            tvAge.setText(item.getAge());
+            tvName.setText(item.getName());
+            tvAge.setText(item.getAddress());
         }
-    }
-}
+    }//end viewholder
+    public void removeItem(int position){ items.remove(position); }
+}//end adapter
