@@ -3,6 +3,7 @@ package com.lec.android.a003_listener;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -66,9 +67,9 @@ public class Main2Activity extends AppCompatActivity {
                 }catch (Exception e){
                     et.setText("");
                 }finally {
-                    String cal1="";
-                    String cal2="";
-                    String symbol="";
+                    cal1="";
+                    cal2="";
+                    symbol="";
                 }
             }
         });
@@ -80,7 +81,23 @@ public class Main2Activity extends AppCompatActivity {
             }
         });
 
+        class numberListener implements View.OnClickListener{
+            @Override
+            public void onClick(View v) {
+                String text=(String)((Button)v).getText();
+                et.setText(et.getText().append(text));
+            }
+        }
 
+        class calListener implements View.OnClickListener{
+            @Override
+            public void onClick(View v) {
+                cal1=et.getText().toString();
+                symbol=(String)((Button)v).getText();
+                et.setText("");
+                Log.d("listener",cal1);
+            }
+        }
 
 
 
