@@ -1,6 +1,7 @@
 package com.lec.android.a008_practice;
 
 import android.icu.text.IDNA;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
@@ -14,26 +15,38 @@ import java.util.List;
 
 public class InfobookAdapter<infobook> extends RecyclerView.Adapter<InfobookAdapter.ViewHolder> {
 
-    List<Infobook> items=new ArrayList<Infobook>();
+    List<Infobook> items = new ArrayList<Infobook>();
 
     static InfobookAdapter adapter;
 
-    public InfobookAdapter() { this.adapter = this; }
+    public InfobookAdapter() {
+        this.adapter = this;
+    }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+
+        // 주어진 ViewGroup 으로부터 LayoutInflater 추출
+        LayoutInflater inf = LayoutInflater.from(parent.getContext());
+        // 준비된 레이아웃(XML) 으로부터 View 를 만들어 ViewGroup 에 붙이고
+        // 그렇게 만들어진 View 를 리턴한다
+        View itemView = inf.inflate(R.layout.item, parent, false);
+
+        // 위에서 마들어진 새로운 View 를 ViewHolder 에 담아 리턴
+        return new ViewHolder(itemView);
     }
+
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-
+        Infobook item=items.get(position);
+        holder.setItem(item);
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return items.size();
     }
 
 
@@ -62,11 +75,19 @@ public class InfobookAdapter<infobook> extends RecyclerView.Adapter<InfobookAdap
 
 
         }//end 생성자
+
+        // Phonebook 데이터를 받아서 멤버변수 세팅
         public void setItem(Infobook item){
-            tvAge.setText(item.getAge());
             tvName.setText(item.getName());
-            tvAge.setText(item.getAddress());
+            tvAge.setText(item.getAge());
+            tvAddress.setText(item.getAddress());
         }
+
+
     }//end viewholder
-    public void removeItem(int position){ items.remove(position); }
-}//end adapter
+    public void addItem(Infobook item) {  items.add(item); }
+    public void addItem(int position, Infobook item) {   items.add(position, item);}
+    public void setItems(ArrayList<Infobook> items) {   this.items = items;}
+    public Infobook getItem(int position) {   return items.get(position);}
+    public void setItem(int position, Infobook item) {   items.set(position, item); }
+    public void removeItem(int position){ items.remove(position); }}//end adapter

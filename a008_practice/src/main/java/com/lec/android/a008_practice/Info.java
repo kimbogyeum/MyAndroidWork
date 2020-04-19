@@ -1,28 +1,23 @@
 package com.lec.android.a008_practice;
 
-import android.content.Intent;
-import android.os.Bundle;
+public class Info {
+    public static String[] name1={
 
-import androidx.appcompat.app.AppCompatActivity;
 
-public class Info extends AppCompatActivity {
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    };
 
-        //받고
-        Intent intent=getIntent();
-        int num1=intent.getIntExtra("num1",0);
-        int num2=intent.getIntExtra("num2",0);
+    public static int[] age1={
 
-        //돌려주기
-        intent.putExtra("plus",num1+num2);
-        intent.putExtra("minus",num1-num2);
+    };
 
-        //호출한 화면에 값 되돌려주기
-        setResult(RESULT_OK,intent);
+    public static final String[] address1={
 
-        finish(); //onDestroy()와 동일
-    }// end onCreate()
+    };
 
-}// end Activity
+    private static int idx = 0;
+
+    public static int next() {
+        idx = idx % name1.length;
+        return idx++;   // idx 값 리턴하고 1증가
+    }
+}// end
