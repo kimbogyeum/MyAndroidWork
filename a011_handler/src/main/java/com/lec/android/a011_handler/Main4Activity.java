@@ -1,9 +1,13 @@
 package com.lec.android.a011_handler;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.widget.TextView;
+import android.widget.Toast;
 //TODO
 //Value1
 //1~10 까지 1초단위로 증가시키기
@@ -16,56 +20,73 @@ import android.widget.TextView;
 //Handler 사용
 public class Main4Activity extends AppCompatActivity {
 
-    int mainValue = 0;
-    int backValue1 = 0;
-    int backValue2 = 0;
-    TextView tvMainValue;
-    TextView tvBackValue1, tvBackValue2, tvBackValue3, tvBackValue4;
+    int value1= 0,value2=0,value3= 0,value4=0,value5=0 ;
+
+    TextView tvResult1,tvResult2,tvResult3,tvResult4,tvResult5;
+    Handler handler2;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main4);
 
-        tvMainValue = findViewById(R.id.tvMainValue);
-        tvBackValue1 = findViewById(R.id.tvBackValue1);
-        tvBackValue2 = findViewById(R.id.tvBackValue2);
-        tvBackValue3 = findViewById(R.id.tvBackValue3);
-        tvBackValue4 = findViewById(R.id.tvBackValue4);
+        tvResult1 = findViewById(R.id.tvResult1);
+        tvResult2 = findViewById(R.id.tvResult2);
+        tvResult3 = findViewById(R.id.tvResult3);
+        tvResult4 = findViewById(R.id.tvResult4);
+        tvResult5 = findViewById(R.id.tvResult5);
 
-        Main4Activity.BackThread1 thread1=new Main4Activity.BackThread1();
-        thread1.setDaemon(true);
-        thread1.start();
+        //value1
+        handler1.sendEmptyMessage(1);
+
+        //value2
+        handler2= new Handler();
+        handler2.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                value2++;
+                tvResult2.setText("value2: "+value2);
+                if(value2<20){
+                    handler2.postDelayed(this,1000);
+                }else{
+                    doUpload(2);
+                }
+            }
+        },0);
 
 
     }//end onCreate()
-    class BackThread1 extends Thread{
+
+
+    //value 1
+    Handler handler1=new Handler() {
+
         @Override
-        public void run() {
-            super.run();
-            while(true){
+        public void handleMessage(@NonNull Message msg) {
+            value1++;
+            tvResult1.setText("value1: " + value1);
+
+            if(value1<10){
+                handler1.sendEmptyMessageDelayed(1,1000);
+            }else{
+            doUpload(msg.what);
+        }
+        }
+
+    };
 
 
-                //방법 1: 메인에서 생성된 Handler 객체의 sentEmptyMessage 를 통해 message 전달
-                backValue1++;
-                handler1.sendEmptyMessage(1);// 아래 핸들러에 1번 message를 전송하면 핸들러가 main 스레드를 건드릴 수 있는거지.
-
-                //방법 2: 메인에서 생성된 Handler 객체의 post어쩌구저쩌구()를 통해 Runnable 객체 전달.post로 시작하면 Runnable
-                backValue2+=2;
-                handler2.post(new Runnable() {
-                    @Override
-                    public void run() {//Runnable의 run()에서 메인 UI 접근
-                        tvBackValue2.setText("BackValue2: "+ backValue2);
-                    }
-                });
+    //Toast 만들어주기
+    void doUpload(int n){
+        Toast.makeText(getApplicationContext(),n+": 업로드 끝",Toast.LENGTH_LONG).show();
+    }
 
 
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }//end while
-        }//end run
-    }//end BackThread1
+
+
+
+
+
+
 }//end Activity

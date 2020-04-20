@@ -27,12 +27,14 @@ public class MainActivity extends AppCompatActivity {
 //        RecyclerView.LayoutManager layoutManager=new GridLayoutManager(this,2); //2열씩 보여주는 것
         rv.setLayoutManager(layoutManager);
 
+
         //Adapter 객체 생성
         adapter=new PhonebookAdapter();
 
         initAdapter(adapter);
 
         rv.setAdapter(adapter);//RecyclerView에 Adapter 장착!
+
         Button btnInsert=findViewById(R.id.btnInsert);
         Button btnAppend=findViewById(R.id.btnAppend);
 

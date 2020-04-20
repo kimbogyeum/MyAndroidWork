@@ -23,7 +23,6 @@ public class InfobookAdapter<infobook> extends RecyclerView.Adapter<InfobookAdap
         this.adapter = this;
     }
 
-    @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
@@ -76,7 +75,7 @@ public class InfobookAdapter<infobook> extends RecyclerView.Adapter<InfobookAdap
 
         }//end 생성자
 
-        // Phonebook 데이터를 받아서 멤버변수 세팅
+        // Infobook 데이터를 받아서 멤버변수 세팅
         public void setItem(Infobook item){
             tvName.setText(item.getName());
             tvAge.setText(item.getAge());

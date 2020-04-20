@@ -93,8 +93,7 @@ public class Main3Activity extends AppCompatActivity {
                         mHandler.postDelayed(new Runnable() {
                             @Override
                             public void run() {
-                                doUpload(2);
-                            }
+                                doUpload(2); }
                         },3000);
                     }
 

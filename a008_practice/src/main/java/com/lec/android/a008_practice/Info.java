@@ -3,14 +3,15 @@ package com.lec.android.a008_practice;
 public class Info {
     public static String[] name1={
 
-
+            "아이언맨", "캡틴아메리카"
     };
 
-    public static int[] age1={
-
+    public static String[] age1={
+            "12","13"
     };
 
     public static final String[] address1={
+            "서울시 강남구","서울시 금천구"
 
     };
 
