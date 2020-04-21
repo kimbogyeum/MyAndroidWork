@@ -74,13 +74,12 @@ public class Main2Activity extends AppCompatActivity {
         public void run() {
             super.run();
             while(true){
-
-
                 //방법 1: 메인에서 생성된 Handler 객체의 sentEmptyMessage 를 통해 message 전달
                 backValue1++;
-                handler1.sendEmptyMessage(1);// 아래 핸들러에 1번 message를 전송하면 핸들러가 main 스레드를 건드릴 수 있는거지.
+                handler1.sendEmptyMessage(1);
+                // 아래 핸들러에 1번 message를 전송하면 핸들러가 main 스레드를 건드릴 수 있는거지.
 
-                //방법 2: 메인에서 생성된 Handler 객체의 post어쩌구저쩌구()를 통해 Runnable 객체 전달.post로 시작하면 Runnable
+                //방법 2: 메인에서 생성된 Handler 객체의 post어쩌구저쩌구()를 통해 Runnable 객체 전달.
                 backValue2+=2;
                 handler2.post(new Runnable() {
                     @Override
@@ -100,13 +99,13 @@ public class Main2Activity extends AppCompatActivity {
     }//end BackThread1
 
     //---------------------------------------------------------------------------------------------
-// 방법1
+
 // '메인스레드' 에서 Handler 객체를 생성한다.
 // Handler 객체를 생성한 스레드 만이 다른 스레드가 전송하는 Message나 Runnable 객체를
 // 수신할수 있다.
 // 아래 생성된 Handler 객체는 handleMessage() 를 오버라이딩 하여
 // Message 를 수신합니다.
-
+// 방법1
     Handler handler1=new Handler(){
         @Override
         public void handleMessage(@NonNull Message msg) {
@@ -119,7 +118,6 @@ public class Main2Activity extends AppCompatActivity {
     };
 
 //    ---------------------------------------------------------------------------------------------
-//얘도 메인에서 생성한거지?ㅇㅇ
 //방법2
 Handler handler2=new Handler(){};
 
