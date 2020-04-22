@@ -26,7 +26,7 @@ public class Start extends AppCompatActivity implements View.OnClickListener{ //
     int time=30; //시간값
     int point=0; //점수값
 
-    // 블럭이미지 리소스 배열
+    // 블럭이미지 리소스 배열~
     int [] img={R.drawable.block_red,R.drawable.block_blue,R.drawable.block_green};
 
     // 떨어지는 블럭의 ImageView 배열 객체
