@@ -93,7 +93,7 @@ public class Start extends AppCompatActivity implements View.OnClickListener{ //
                     }//end if
 
                 }//end run()
-            },1000); //1초후에 시간표시
+            },1000); //1초후에 시간표시, 1초씩 줄어드는 시간을 표시하는거.
         }//end run()
     }//end GameThread
 

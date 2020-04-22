@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {// 클릭되었을때 호출되는 메소드 (콜백메소드 callback method)
-                Log.d("myapp","버튼 2가 클릭되었습니다. ");
+                Log.d("myapp","버튼 2가 클릭되었습니다.");
                 tvResult.setText("버튼 2가 클릭됨");
                 tvResult.setBackgroundColor(Color.YELLOW);
                 //return false;//false리턴하면 이벤트가 click까지 간다.
