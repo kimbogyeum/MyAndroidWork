@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/menu_refresh"
+        android:title="새로고침"
+        app:showAsAction="always"
+        android:icon="@drawable/menu_refresh"
+        />
+<!--
+    <item
+        android:id="@+id/menu_search"
+        android:title="검색"
+        app:showAsAction="always"
+        android:icon="@drawable/menu_search"
+        />
+-->
+    <item
+        android:id="@+id/menu_setting"
+        android:title="설정"
+        android:icon="@drawable/menu_settings"
+        app:showAsAction="always"
+        />
+
+    <item
+        android:id="@+id/menu_alarm"
+        android:title="alarm"
+        android:icon="@drawable/ic_alarm_black_18dp"
+        app:showAsAction="always"
+        />
+
+    <item
+        android:id="@+id/menu_search"
+        android:title="검색"
+        app:showAsAction="always"
+        android:orderInCategory="102"
+        app:actionLayout="@layout/search_layout"/>
+<!--        여기는 android:actionLayout 으로 하니까 동작이 안되서
+            app:actionLayout 으로 해야함-->
+
+</menu>
