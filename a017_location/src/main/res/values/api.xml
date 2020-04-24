@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+<!--GitHub 등에 올릴때 주의, gitignore 에 추가-->
+    <string name="api_key">AIzaSyDjK8I8iZL6EGzM7k6IQJmrPmeZNloRkP8</string>
+
+
+</resources>
+
