@@ -13,9 +13,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class InfobookAdapter<infobook> extends RecyclerView.Adapter<InfobookAdapter.ViewHolder> {
+public class InfobookAdapter extends RecyclerView.Adapter<InfobookAdapter.ViewHolder> {
 
-    List<Infobook> items = new ArrayList<Infobook>();
+    List<Infobook> items = new ArrayList<>();
 
     static InfobookAdapter adapter;
 
@@ -23,6 +23,7 @@ public class InfobookAdapter<infobook> extends RecyclerView.Adapter<InfobookAdap
         this.adapter = this;
     }
 
+    @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
@@ -81,12 +82,9 @@ public class InfobookAdapter<infobook> extends RecyclerView.Adapter<InfobookAdap
             tvAge.setText(item.getAge());
             tvAddress.setText(item.getAddress());
         }
-
-
     }//end viewholder
-    public void addItem(Infobook item) {  items.add(item); }
-    public void addItem(int position, Infobook item) {   items.add(position, item);}
-    public void setItems(ArrayList<Infobook> items) {   this.items = items;}
-    public Infobook getItem(int position) {   return items.get(position);}
-    public void setItem(int position, Infobook item) {   items.set(position, item); }
-    public void removeItem(int position){ items.remove(position); }}//end adapter
+
+    public void addItem(Infobook item) {   items.add(item);}
+    public void removeItem(int position){ items.remove(position); }
+
+}//end adapter

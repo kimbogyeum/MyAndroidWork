@@ -126,7 +126,7 @@ public class Start extends AppCompatActivity implements View.OnClickListener{ //
 
         //게임이 시작되면 초기화, 랜덤으로 블럭의 색상 지정
         for (int i=0;i<iv.length;i++){
-            //0,1,2 <-red,green,blue 위에 img[]여기서 쓸고얌
+            //0,1,2 <-red,blue,green 위에 img[]여기서 쓸고얌
             int num=new Random().nextInt(3); //0,1,2 중의 랜덤 정수
             iv[i].setImageResource(img[num]);
             iv[i].setTag(num+"");//태그를 버튼의 색상 판단하기 위한 값으로 활용
