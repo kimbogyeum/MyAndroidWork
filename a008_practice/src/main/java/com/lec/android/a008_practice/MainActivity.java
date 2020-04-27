@@ -56,23 +56,13 @@ public class MainActivity extends AppCompatActivity {
 
     protected void insertData(View v) {
 
-    int idx=0;
     String a = name.getText().toString();
     String b = age.getText().toString();
     String c= address.getText().toString();
 
-    List<String> aList= new ArrayList<>();
-    List<String> bList= new ArrayList<>();
-    List<String> cList= new ArrayList<>();
 
-    aList.add(a);
-    bList.add(b);
-    cList.add(c);
-
-    adapter.addItem(new Infobook(aList.get(idx),bList.get(idx),cList.get(idx)));
+    adapter.addItem(0,new Infobook(a,b,c));
     adapter.notifyDataSetChanged();
-
-    idx++;
 
     }//end insertData()
 
