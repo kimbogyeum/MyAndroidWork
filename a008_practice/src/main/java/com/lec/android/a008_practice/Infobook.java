@@ -10,7 +10,7 @@ public class Infobook implements Serializable {
 
     public Infobook() { }
 
-    public Infobook(String name, String age, String email) {
+    public Infobook(String name, String age, String address) {
         this.name = name;
         this.age = age;
         this.address = address;

@@ -11,29 +11,35 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
     InfobookAdapter adapter; //Adapter 객체
     RecyclerView rv;
     EditText name,age,address;
-    private final int REQUEST_CODE_CALC = 101;
+    Button btnadd;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        name= findViewById(R.id.name);
+        age=findViewById(R.id.age);
+        address=findViewById(R.id.address);
 
         rv=findViewById(R.id.rv);
         RecyclerView.LayoutManager layoutManager=new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
         rv.setLayoutManager(layoutManager);
         adapter=new InfobookAdapter();
 
-        rv.setAdapter(adapter);//RecyclerView에 Adapter 장착!
-        Button btnadd=findViewById(R.id.btnadd);
-        name= findViewById(R.id.name);
-        age=findViewById(R.id.age);
-        address=findViewById(R.id.address);
+
+        btnadd=findViewById(R.id.btnadd);
+
+
 
 
 
@@ -41,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 insertData(v);
+                rv.setAdapter(adapter);//RecyclerView에 Adapter 장착!
             }
         });
 
@@ -49,13 +56,24 @@ public class MainActivity extends AppCompatActivity {
 
     protected void insertData(View v) {
 
-    int idx=Info.next();
+    int idx=0;
     String a = name.getText().toString();
     String b = age.getText().toString();
     String c= address.getText().toString();
 
-    adapter.addItem(0,new Infobook(a,b,c));
-    adapter.notifyDataSetChanged();
-    }
+    List<String> aList= new ArrayList<>();
+    List<String> bList= new ArrayList<>();
+    List<String> cList= new ArrayList<>();
 
-}
+    aList.add(a);
+    bList.add(b);
+    cList.add(c);
+
+    adapter.addItem(new Infobook(aList.get(idx),bList.get(idx),cList.get(idx)));
+    adapter.notifyDataSetChanged();
+
+    idx++;
+
+    }//end insertData()
+
+}//end Activity
