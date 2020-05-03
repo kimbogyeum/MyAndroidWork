@@ -16,9 +16,7 @@ import java.util.List;
 public class InfobookAdapter extends RecyclerView.Adapter<InfobookAdapter.ViewHolder> {
 
     List<Infobook> items = new ArrayList<>();
-
     static InfobookAdapter adapter;
-
     public InfobookAdapter() {
         this.adapter = this;
     }
@@ -36,7 +34,6 @@ public class InfobookAdapter extends RecyclerView.Adapter<InfobookAdapter.ViewHo
         // 위에서 마들어진 새로운 View 를 ViewHolder 에 담아 리턴
         return new ViewHolder(itemView);
     }
-
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
@@ -72,8 +69,6 @@ public class InfobookAdapter extends RecyclerView.Adapter<InfobookAdapter.ViewHo
                     adapter.notifyDataSetChanged();
                 }
             });
-
-
         }//end 생성자
 
         // Infobook 데이터를 받아서 멤버변수 세팅
@@ -84,7 +79,7 @@ public class InfobookAdapter extends RecyclerView.Adapter<InfobookAdapter.ViewHo
         }
     }//end viewholder
 
-    public void addItem(Infobook item) {   items.add(item);}
+    public void addItem(int position,Infobook item) {  items.add(position,item);}
     public void removeItem(int position){ items.remove(position); }
 
 }//end adapter

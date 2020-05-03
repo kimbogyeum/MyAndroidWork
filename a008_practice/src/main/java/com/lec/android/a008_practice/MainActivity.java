@@ -21,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
     EditText name,age,address;
     Button btnadd;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,17 +31,14 @@ public class MainActivity extends AppCompatActivity {
         address=findViewById(R.id.address);
 
         rv=findViewById(R.id.rv);
-        RecyclerView.LayoutManager layoutManager=new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
+        RecyclerView.LayoutManager layoutManager
+                =new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
         rv.setLayoutManager(layoutManager);
+
         adapter=new InfobookAdapter();
 
 
         btnadd=findViewById(R.id.btnadd);
-
-
-
-
-
         btnadd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,23 +52,13 @@ public class MainActivity extends AppCompatActivity {
 
     protected void insertData(View v) {
 
-    int idx=0;
     String a = name.getText().toString();
     String b = age.getText().toString();
     String c= address.getText().toString();
 
-    List<String> aList= new ArrayList<>();
-    List<String> bList= new ArrayList<>();
-    List<String> cList= new ArrayList<>();
 
-    aList.add(a);
-    bList.add(b);
-    cList.add(c);
-
-    adapter.addItem(new Infobook(aList.get(idx),bList.get(idx),cList.get(idx)));
+    adapter.addItem(0,new Infobook(a,b,c));
     adapter.notifyDataSetChanged();
-
-    idx++;
 
     }//end insertData()
 
