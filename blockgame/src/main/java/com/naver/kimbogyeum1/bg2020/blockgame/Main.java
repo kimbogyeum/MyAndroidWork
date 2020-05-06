@@ -26,7 +26,7 @@ public class Main extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+    
 
 
         btnHowto.setOnClickListener(new View.OnClickListener() {
