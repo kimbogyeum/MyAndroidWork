@@ -21,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
     EditText name,age,address;
     Button btnadd;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,17 +31,14 @@ public class MainActivity extends AppCompatActivity {
         address=findViewById(R.id.address);
 
         rv=findViewById(R.id.rv);
-        RecyclerView.LayoutManager layoutManager=new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
+        RecyclerView.LayoutManager layoutManager
+                =new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
         rv.setLayoutManager(layoutManager);
+
         adapter=new InfobookAdapter();
 
 
         btnadd=findViewById(R.id.btnadd);
-
-
-
-
-
         btnadd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

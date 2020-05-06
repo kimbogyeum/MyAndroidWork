@@ -84,7 +84,7 @@ public class InfobookAdapter extends RecyclerView.Adapter<InfobookAdapter.ViewHo
         }
     }//end viewholder
 
-    public void addItem(int position,Infobook item) {items.add(item);}
+    public void addItem(Infobook item) {   items.add(item);}
     public void removeItem(int position){ items.remove(position); }
 
 }//end adapter
